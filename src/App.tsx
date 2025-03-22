@@ -1,25 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import Home from './pages/Home';
+import Auth from './pages/Auth';
+import Dashboard from './pages/Dashboard';
+import MockInterview from './pages/MockInterview';
+import Resume from './pages/ResumeTailoring';
+import InterviewChatbot from './pages/InterviewChatbot';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#2196F3', // This is the default primary color
+    },
+    secondary: {
+      main: '#21CBF3',
+    },
+  },
+  typography: {
+    fontFamily: '"Average", "Times New Roman", serif',
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Auth />} />
+          <Route path="/signup" element={<Auth />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/mock-interview" element={<MockInterview />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/chat" element={<InterviewChatbot />} />
+          {/* Add more routes here as we create more pages */}
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
