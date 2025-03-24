@@ -150,6 +150,13 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({ onFilesUploaded }) => {
             >
               Upload Resume
             </Button>
+            <Button
+              variant="outlined"
+              startIcon={<WorkIcon />}
+              onClick={() => onButtonClick('jobDesc')}
+            >
+              Upload Job Description
+            </Button>
           </Stack>
         </Box>
         
@@ -194,17 +201,6 @@ const FileUploadArea: React.FC<FileUploadAreaProps> = ({ onFilesUploaded }) => {
               </ListItem>
             )}
           </List>
-        )}
-        
-        {resumeFile && jobDescFile && (
-          <Button 
-            variant="contained" 
-            color="primary" 
-            size="large"
-            sx={{ mt: 2 }}
-          >
-            Analyze and Generate Suggestions
-          </Button>
         )}
       </Stack>
     </Paper>
